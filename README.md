@@ -1,7 +1,7 @@
 # Raid Shamer
 Takes a screenshot of deaths during Theater of Blood. Also supports discord webhook integration.
 
-Thanks to socolova6 for the idea!
+Thanks to Zayre for the idea and socalova6 for bringing it to my attention.
 
 This plugin by default just saves a photo of a TOB death to a folder called "Wall of Shame." I'm assuming if you're reading this, you are looking for discord webhook information.
 
