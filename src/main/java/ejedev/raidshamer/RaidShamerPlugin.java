@@ -22,7 +22,7 @@ import java.util.function.Consumer;
 
 @PluginDescriptor(
         name = "Raid Shamer",
-        description = "Takes a screenshot of deaths during Theater of Blood. Also supports discord webhook integration.",
+        description = "Takes a screenshot of deaths during Theater of Blood. Supports discord webhook integration.",
         tags = {"death", "raid", "raids", "shame", "tob", "theater", "discord", "webhook"},
         loadWhenOutdated = true,
         enabledByDefault = false
@@ -60,7 +60,7 @@ public class RaidShamerPlugin extends Plugin{
         if (actor instanceof Player)
         {
             Player player = (Player) actor;
-            if (inTob)
+            if (shouldTakeScreenshot(player))
             {
                 takeScreenshot("Death of " + player.getName(), "Wall of Shame");
             }
@@ -68,6 +68,12 @@ public class RaidShamerPlugin extends Plugin{
                 System.out.println("[DEBUG] Not in tob sorry.");
             }
         }
+    }
+
+    private boolean shouldTakeScreenshot(Player player) {
+        boolean isPlayerValidTarget = config.captureOwnDeaths() ||
+            (!config.captureOwnDeaths() && player != client.getLocalPlayer());
+        return inTob && isPlayerValidTarget;
     }
 
     @Subscribe
