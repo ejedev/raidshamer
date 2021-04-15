@@ -1,5 +1,5 @@
 # Raid Shamer
-Takes a screenshot of deaths during Theater of Blood. Also supports discord webhook integration.
+Takes a screenshot of deaths during Theater of Blood/Chambers of Xeric. Supports discord webhook integration.
 
 Thanks to Zayre for the idea and socalova6 for bringing it to my attention.
 

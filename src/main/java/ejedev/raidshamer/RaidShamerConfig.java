@@ -21,10 +21,21 @@ public interface RaidShamerConfig extends Config
     }
 
     @ConfigItem(
+        keyName = "activeInCoX",
+        name = "Active in Chambers of Xeric (CoX)",
+        description = "Allows for shaming in CoX",
+        position = 2
+    )
+    default boolean activeInCoX()
+    {
+        return true;
+    }
+
+    @ConfigItem(
             keyName = "webhookEnabled",
             name = "Discord Webhook",
             description = "Allows you to send death photos automatically to a discord webhook. Read the github page for info.",
-            position = 2
+            position = 3
     )
     default boolean webhookEnabled()
     {
@@ -35,7 +46,7 @@ public interface RaidShamerConfig extends Config
             keyName = "webhookLink",
             name = "Webhook URL",
             description = "Put your webhook link here, the full thing copied from discord.",
-            position = 3
+            position = 4
     )
     default String webhookLink()
     {

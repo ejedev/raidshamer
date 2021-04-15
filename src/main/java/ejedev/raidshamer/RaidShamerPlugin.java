@@ -22,12 +22,12 @@ import java.util.function.Consumer;
 
 @PluginDescriptor(
         name = "Raid Shamer",
-        description = "Takes a screenshot of deaths during Theater of Blood. Supports discord webhook integration.",
-        tags = {"death", "raid", "raids", "shame", "tob", "theater", "discord", "webhook"},
+        description = "Takes a screenshot of deaths during Theater of Blood/Chambers of Xeric. Supports discord webhook integration.",
+        tags = {"death", "raid", "raids", "shame", "tob", "theater", "cox", "chambers", "discord", "webhook"},
         loadWhenOutdated = true,
         enabledByDefault = false
 )
-public class RaidShamerPlugin extends Plugin{
+public class RaidShamerPlugin extends Plugin {
 
     @Inject
     private Client client;
@@ -73,7 +73,10 @@ public class RaidShamerPlugin extends Plugin{
     private boolean shouldTakeScreenshot(Player player) {
         boolean isPlayerValidTarget = config.captureOwnDeaths() ||
             (!config.captureOwnDeaths() && player != client.getLocalPlayer());
-        return inTob && isPlayerValidTarget;
+        boolean inRaid = client.getVar(Varbits.IN_RAID) > 0;
+        boolean isInValidRaid = inTob || (config.activeInCoX() && inRaid);
+        
+        return isInValidRaid && isPlayerValidTarget;
     }
 
     @Subscribe
